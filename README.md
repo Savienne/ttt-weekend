@@ -120,22 +120,37 @@ play: function (init)=>.render {
   // a) In a constant called `winningCombos` define the eight possible winning 
   //    combinations as an array of arrays.
 
-  const winningCombos [0,1,2], [0,4,7], [] [] [] [] [] []
+  const winningCombos [0,1,2], [6,7,8], [3,4,5] [0,3,6] [1,4,7] [2,5,8] [0,4,8] [2,4,6]
 
 // Step 6 - Handle a player clicking a square with a `handleClick` function
 
   // a) Create a function called `handleClick`. It will have an `evt` parameter.
+        function handleClick (evt) {
+
+    handleClick.forEach(evt)
 
   // b) Attach an event listener to the game board. On the `'click'` event, it 
   //    should call the `handleClick` function you created in 6a.
+        
+         handleClickBtn.addEventListener('click',function(evt) {
+        }
 
   // c) Obtain the index of the square that was clicked by "extracting" the 
   //    index from an `id` assigned to the element in the HTML. Assign this to 
   //    a constant called `sqIdx`.
 
+      const squareEls.forEach(function[square])
+      square.addEventListener('click', handleClick)
+
+
+      const sqIdx.Find
+
   // d) If the `board` has a value at the `sqIdx`, immediately `return` because 
   //    that square is already taken. Also, if `winner` is not `null`
   //    immediately `return` because the game is over.
+
+  if()return
+  if()return
 
   // e) Update the `board` array at the `sqIdx` with the current value of
   //    `turn`.
@@ -158,6 +173,8 @@ play: function (init)=>.render {
    *
    * Step b1 below is a more elegant method that takes advantage of the
    * `winningCombos` array you wrote above in step 5. 
+
+   
    *
    * Step b2 might be a little simpler to comprehend, but you'll need to write  
    * more code. Step b2 also won't take advantage of the `winningCombos`
