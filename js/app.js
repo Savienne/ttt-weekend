@@ -12,34 +12,29 @@ let board = [null, null, null, null, null, null, null, null, null]
 /*------------------------ Cached Element References ------------------------*/
 const squareEls = document.querySelectorAll(".square")
 const messageEl = document.querySelector("#message")
-const resetButton = document.querySelector("#reset")
+const resetBtn = document.querySelector("#reset-button")
+
 
 // console.log(squareEls)
 // console.log(messageEl)
 /*----------------------------- Event Listeners -----------------------------*/
- 
-
- squareEls.forEach(function(squares) {
+resetBtn.addEventListener("click", init)
+squareEls.forEach(function(squares) {
    squares.addEventListener('click',handleClick)
  })
-// const resetButton = document.querySelector('#reset');
-    
-
-
-// resetButton.addEventListener('click', resetBoard)
-// });
 
 /*-------------------------------- Functions --------------------------------*/
 init()
+
+
+init()
 function init() {
-    render()
-}
     board =  [null, null, null, null, null, null, null, null, null]
     turn = 1
     winner = null
     render()
 
-
+}
 
     function handleClick(evt){
 
@@ -55,8 +50,8 @@ function init() {
         } 
             board[sqIdx] = turn
             turn = turn * (-1)
-            render()
             getWinner()
+            render()
             // console.log(board)
     }
 
@@ -72,8 +67,8 @@ function render() {
         squareEls[idx].textContent = ''
       }
     })
+    const playerTurn = turn === 1 ?  "Player 1":  "Player 2"
     if (winner === null) {
-       const playerTurn = turn === 1 ?  "Player 1":  "Player 2"
        messageEl.textContent = playerTurn + "'s turn"
 
       } else if (winner === "T") {
@@ -86,6 +81,19 @@ function render() {
 
 function getWinner() {
    winningCombos.forEach(function(combo){
-        console.log(combo)
+        // console.log(combo)
+        if(board[combo[0]] + board[combo[1]] + board[combo[2]] === 3){
+            winner = 1
+        }
+        if  
+         (board[combo[0]] + board[combo[1]] + board[combo[2]] === -3){
+           winner = -1
+         }
+           console.log(`winner`)
+         
+        if (!board.includes(null)){
+            winner = 'T'
+        }
+        
     })
 }
