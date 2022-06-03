@@ -14,8 +14,8 @@ const squareEls = document.querySelectorAll(".square")
 const messageEl = document.querySelector("#message")
 const resetButton = document.querySelector("#reset")
 
-console.log(squareEls)
-console.log(messageEl)
+// console.log(squareEls)
+// console.log(messageEl)
 /*----------------------------- Event Listeners -----------------------------*/
  
 
@@ -41,42 +41,51 @@ function init() {
 
 
 
-function handleClick(evt){
+    function handleClick(evt){
 
-    let sqIdx = parseInt(evt.target.id.slice(2))
-     if (board[sqIdx] !== null){
-    
-    return
-    
-    } if (winner !== null) {
-    
-        return 
-    
-    } 
-        board[sqIdx] = turn
-        turn = turn * (-1)
-        render()
-        console.log(board)
-}
-    
+        let sqIdx = parseInt(evt.target.id.slice(2))
+         if (board[sqIdx] !== null){
+        
+        return
+        
+        } if (winner !== null) {
+        
+            return 
+        
+        } 
+            board[sqIdx] = turn
+            turn = turn * (-1)
+            render()
+            getWinner()
+            // console.log(board)
+    }
 
-
+    
 
 function render() {
     board.forEach((square,idx) => {
       if (square === 1) {
-      squareEls[idx].textContent = "0"
+      squareEls[idx].textContent = "X"
       } else if (square === -1) {
-        squareEls[idx].textContent = "X"
+        squareEls[idx].textContent = "0"
       } else {
         squareEls[idx].textContent = ''
       }
     })
     if (winner === null) {
-      return (turn === 1 ? messageEl.textContent = "Player 1's turn!!": messageEl.textContent = "Player 2's turn!!")
-    } else if (winner === "T") {
-      return messageEl.textContent = "Tie Game!"
+       const playerTurn = turn === 1 ?  "Player 1":  "Player 2"
+       messageEl.textContent = playerTurn + "'s turn"
+
+      } else if (winner === "T") {
+       messageEl.textContent = "Tie Game!"
     } else {
-      return(winner === 1 ? messageEl.textContent = "Player 1 has won!" : messageEl.textContent = "player 2 has won")
+        const playerWin = turn === 1 ? "Player 2": "Player 1"
+        messageEl.textContent = `Congrats! ${playerWin}`
     }
-  }
+}
+
+function getWinner() {
+   winningCombos.forEach(function(combo){
+        console.log(combo)
+    })
+}
