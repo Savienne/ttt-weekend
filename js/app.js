@@ -57,43 +57,43 @@ function init() {
 
     
 
-function render() {
-    board.forEach((square,idx) => {
-      if (square === 1) {
-      squareEls[idx].textContent = "X"
-      } else if (square === -1) {
-        squareEls[idx].textContent = "0"
-      } else {
-        squareEls[idx].textContent = ''
-      }
-    })
-    const playerTurn = turn === 1 ?  "Player 1":  "Player 2"
-    if (winner === null) {
-       messageEl.textContent = playerTurn + "'s turn"
-
-      } else if (winner === "T") {
-       messageEl.textContent = "Tie Game!"
-    } else {
-        const playerWin = turn === 1 ? "Player 2": "Player 1"
-        messageEl.textContent = `Congrats! ${playerWin}`
+    function render() {
+        board.forEach((square,idx) => {
+          if (square === 1) {
+          squareEls[idx].textContent = "X"
+          } else if (square === -1) {
+            squareEls[idx].textContent = "0"
+          } else {
+            squareEls[idx].textContent = ''
+          }
+        })
+        const playerTurn = turn === 1 ?  "Player 1":  "Player 2"
+        if (winner === null) {
+           messageEl.textContent = playerTurn + "'s turn"
+    
+          } else if (winner === "T") {
+           messageEl.textContent = "Tie Game!"
+        } else {
+            const playerWin = turn === 1 ? "Player 2": "Player 1"
+            messageEl.textContent = `Congrats!${playerWin} Wins! ` 
+        }
     }
-}
 
 function getWinner() {
-   winningCombos.forEach(function(combo){
-        // console.log(combo)
-        if(board[combo[0]] + board[combo[1]] + board[combo[2]] === 3){
-            winner = 1
-        }
-        if  
-         (board[combo[0]] + board[combo[1]] + board[combo[2]] === -3){
-           winner = -1
+    winningCombos.forEach(function(combo){
+         // console.log(combo)
+         if(board[combo[0]] + board[combo[1]] + board[combo[2]] === 3){
+             winner = 1
          }
-           console.log(`winner`)
+         if  
+          (board[combo[0]] + board[combo[1]] + board[combo[2]] === -3){
+            winner = -1
+          }
+            console.log(`winner`)
+          
+         if (!board.includes(null)){
+             winner = 'T'
+         }
          
-        if (!board.includes(null)){
-            winner = 'T'
-        }
-        
-    })
-}
+     })
+ }
